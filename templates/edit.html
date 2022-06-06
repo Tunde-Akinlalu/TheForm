@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+h1>Update Patient</h1>
+    <br/>
+
+    <form method="POST">
+            {{ form.hidden_tag() }}
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.name.label() }}
+                    value="{{ request.form['name'] or form['name'] }}"
+                    class="form-control"
+            </div>
+            <div class="col-md">
+                    {{ form.emr.label() }}
+                    value="{{ request.form['emr'] or form['emr'] }}"
+                    class="form-control"
+                </div>
+            <div class="col-md">
+                    {{ form.age.label() }}
+                    value="{{ request.form['age'] or form['age'] }}"
+                    class="form-control"
+            </div>
+        </div>
+        <br/>
+        <div class="container px-4">
+            <div class="row gx-5">
+                    <div class="col">
+                    {{ form.gender.label() }}
+                    value="{{ request.form['gender'] or form['gender'] }}"
+                    class="form-control"
+
+                    </div>
+                    <div class="col">
+                    {{ form.ward.label() }}
+                    value="{{ request.form['ward'] or form['ward'] }}"
+                    class="form-control"
+                    </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.diagnosis.label() }}
+                    value="{{ request.form['diagnosis'] or form['diagnosis'] }}"
+                    class="form-control"
+            </div>
+            <div class="col-md">
+                    {{ form.operation.label() }}
+                    value="{{ request.form['operation'] or form['operation'] }}"
+                    class="form-control"
+            </div>
+            <div class="col-md">
+                {{ form.specialty.label() }}
+                value="{{ request.form['specialty'] or form['specialty'] }}"
+                class="form-control"
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                {{ form.surgeon.label() }}
+                value="{{ request.form['surgeon'] or form['surgeon'] }}"
+                class="form-control"
+            </div>
+            <div class="col-md">
+                {{ form.assistant.label() }}
+                value="{{ request.form['assistant'] or form['assistant'] }}"
+                class="form-control"
+            </div>
+            <div class="col-md">
+                {{ form.scrub_nurse.label() }}
+                value="{{ request.form['nurse'] or form['nurse'] }}"
+                class="form-control"
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                {{ form.anaesthesia_type.label() }}
+                value="{{ request.form['anesthesia_type'] or form['anaesthesia_type'] }}"
+                class="form-control"
+            </div>
+            <div class="col-md">
+                {{ form.anaesthetist.label() }}
+                value="{{ request.form['anaesthetist'] or form['anaesthetist'] }}"
+                class="form-control"
+            </div>
+            <div class="col-md">
+                {{ form.receiver.label() }}
+                value="{{ request.form['receiver'] or form['receiver'] }}"
+                class="form-control"
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                {{ form.pon.label() }}
+                value="{{ request.form['pon'] or form['pon'] }}"
+                class="form-control"
+            </div>
+            <div class="col-md">
+                {{ form.remark.label() }}
+                value="{{ request.form['remark'] or form['remark'] }}"
+                    class="input-group-text"
+            </div>
+        </div>
+            <br/><br/><br/>
+            {{ form.submit(class="btn btn-primary") }}
+    </form>
+
+{% endblock %}

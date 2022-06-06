@@ -1,0 +1,36 @@
+DROP TABLE IF EXISTS theatre;
+
+CREATE TABLE theatre (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR NOT NULL,
+    input_date TIMESTAMP  NOT NULL DEFAULT CURRENT_DATETIME,
+    emr INTEGER NOT NULL,
+    age CHAR NOT NULL,
+    gender CHAR NOT NULL,
+    ward CHAR NOT NULL,
+    diagnosis CHAR NOT NULL,
+    operation CHAR NOT NULL,
+    specialty CHAR NOT NULL,
+    surgeon CHAR NOT NULL,
+    assistant CHAR NOT NULL,
+    scrub_nurseCHAR NULL,
+    anaesthesia_type CHAR NOT NULL,
+    anaesthetist CHAR NOT NULL,
+    receiver CHAR NULL,
+    pon = CHAR NOT NULL,
+    remark CHAR
+);
+
+
+# cur.execute("INSERT INTO theatre (id, name, input_date, emr, age, gender, ward, diagnosis, "
+            "operation, specialty, surgeon, assistant, scrub_nurse, anaesthesia_type, anaesthetist, "
+            "receiver, pon, remark)"
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            ("Id", "Patient Name", "EMR", "Age", "Gender", "Ward", "Diagnosis", "Operation", "Specialty",
+             "Surgeon", "Assisting Surgeon", "Scrub Nurse", "Type of Anaesthesia", "Anaesthetist",
+             "Sample Receiver", "PON", "Remark", "Submit")
+            )
+cur = con.cursor()
+
+con.commit()
+con.close()

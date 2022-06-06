@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Theatre Form</h1>
+    <br/>
+
+    <form method="POST">
+            {{ form.hidden_tag() }}
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.name.label() }}
+                    {{ form.name(class="form-control") }}
+                    <div id="nameHelp" class="form-text">Type patient's name and surname.</div>
+            </div>
+            <div class="col-md">
+                    {{ form.emr.label() }}
+                    {{ form.emr(class="form-control") }}
+                    <div id="emrHelp" class="form-integer">Patient's EMR must be six digits ******.</div>
+            </div>
+            <div class="col-md">
+                    {{ form.age.label() }}
+                    {{ form.age(class="form-control") }}
+                     <div id="ageHelp" class="form-integer">Age of Patient.</div>
+            </div>
+        </div>
+        <br/>
+        <div class="container px-4">
+            <div class="row gx-5">
+                    <div class="col">
+                    {{ form.gender.label() }}
+                    {{ form.gender(class="form-select") }}
+                    <div id="genderHelp" class="form-text">Patient's Sex</div>
+
+                    </div>
+                    <div class="col">
+                    {{ form.ward.label() }}
+                    {{ form.ward(class="form-select") }}
+                    <div id="WardHelp" class="form-text">Ward Admitted</div>
+                    </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.diagnosis.label() }}
+                    {{ form.diagnosis(class="form-control") }}
+                    <div id="diagnosisHelp" class="form-text">Diagnosis</div>
+            </div>
+            <div class="col-md">
+                    {{ form.operation.label() }}
+                    {{ form.operation(class="form-control") }}
+                <div id="operationHelp" class="form-text">Type of Operation</div>
+            </div>
+            <div class="col-md">
+                {{ form.specialty.label() }}
+                {{ form.specialty(class="form-control") }}
+                <div id="specialtyHelp" class="form-text">Type the specialty e.g Surgery, ENT, Orthopaedics.</div>
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                {{ form.surgeon.label() }}
+                {{ form.surgeon(class="form-control") }}
+                <div id="surgeonHelp" class="form-text">Name of Surgeon</div>
+            </div>
+            <div class="col-md">
+                {{ form.assistant.label() }}
+                {{ form.assistant(class="form-control") }}
+                <div id="assistantHelp" class="form-text">Name of Assisting Doctor</div>
+            </div>
+            <div class="col-md">
+                {{ form.scrub_nurse.label() }}
+                {{ form.scrub_nurse(class="form-control") }}
+                <div id="nurseHelp" class="form-text">Name of Scrub Nurse</div>
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                {{ form.anaesthesia_type.label() }}
+                {{ form.anaesthesia_type(class="form-control") }}
+                <div id="anaesthesiaHelp" class="form-text">Type of Anaesthesia Used</div>
+            </div>
+            <div class="col-md">
+                {{ form.anaesthetist.label() }}
+                {{ form.anaesthetist(class="form-control") }}
+                <div id="anaesthetistHelp" class="form-text">Name of Anaesthetist</div>
+            </div>
+            <div class="col-md">
+                {{ form.receiver.label() }}
+                {{ form.receiver(class="form-control") }}
+                <div id="receiverHelp" class="form-text">Sample Receiver</div>
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                {{ form.pon.label() }}
+                {{ form.pon(class="form-control") }}
+                 <div id="ponHelp" class="form-text">Perioperative Nurse in charge of Specimen</div>
+            </div>
+            <div class="col-md">
+                    {{ form.amount_paid.label() }}
+                    {{ form.amount_paid(class="form-control") }}
+                    <div id="amountHelp" class="form-text">Amount Paid by Patient</div>
+            </div>
+            <div class="col-md">
+                {{ form.remark.label() }}
+                {{ form.remark(class="input-group-text") }}
+                <div id="remarkHelp" class="form-text">Payment Status/Other Remarks</div>
+            </div>
+        </div>
+            <br/><br/><br/>
+            {{ form.submit(class="btn btn-primary") }}
+    </form>
+<br/><br/>
+
+
+{% endblock %}
