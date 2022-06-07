@@ -198,7 +198,7 @@ def download_report():
         csv_writer.writerows(cursor)
 
         dirpath = os.getcwd() + "/patients_data.csv"
-        flash("Data exported Successfully into {}".format(dirpath))
+        flash("Data exported Successfully into {}".format(dirpath), "success")
         return render_template("download_report.html")
         conn.close()
 
@@ -239,10 +239,10 @@ def edit(id):
                     ("name", "emr", "age", "gender", "ward", "diagnosis", "operation", "special    ty", "surgeon",
                     "assistant", "scrub_nurse", "anaesthesia_type", "anaesthetist", "receiver", "pon",
                     "remark", "id"))
-        flash("Patient details updated successfully!")
+        flash("Patient details updated successfully!", "success")
         return redirect("view.html")
     except:
-        flash("There was a problem updating patient details")
+        flash("There was a problem updating patient details", "caution")
         return render_template("edit.html", form=form, patient_to_edit=patient_to_edit)
 
 @app.route("/delete/<int:id>")
@@ -269,7 +269,7 @@ def delete(id):
     try:
         db.session.delete(patient_to_delete)
         db.session.commit()
-        flash("Patient Deleted Successfully!!!")
+        flash("Patient Deleted Successfully!!!", "success")
         pxs = patients.query.order_by(patients.input_date)
         return render_template("view.html", name=name, emr=emr, age=age, gender=gender, ward=ward,
                                diagnosis=diagnosis, operation=operation, specialty=specialty, surgeon=surgeon,
