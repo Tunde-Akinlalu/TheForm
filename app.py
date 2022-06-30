@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 import csv
+import pandas as pd
 from sqlite3 import Error
 import xlwt
 import io
@@ -202,6 +203,14 @@ def download_report():
         return render_template("download_report.html")
         conn.close()
 
+#@app.route("/upload") ####### for future use
+#def upload():
+#    conn = sqlite3.connect('qiudata.db')
+#    wb = pd.read_excel('patients_data.xlsx')
+#    wb.to_sql(name='px_data', con=conn, if_exists='replace', index=True)
+#    conn.commit()
+#    return render_template("upload.html")
+#    conn.close()
 
 
 
