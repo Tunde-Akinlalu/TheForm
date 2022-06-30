@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 import csv
+
 import pandas as pd
 from sqlite3 import Error
 import xlwt
@@ -82,7 +83,7 @@ validators=[InputRequired()])
     remark = TextAreaField("Remark")
     submit = SubmitField("Submit")
 
-
+###########The various pages on the app
 @app.route('/')
 def index():
     return render_template("index.html")
