@@ -199,7 +199,7 @@ def download_report():
         csv_writer.writerow([i[0] for i in cursor.description])
         csv_writer.writerows(cursor)
 
-        dirpath = os.getcwd() + "/patients_data.csv"
+        dirpath = '/Downloads' + "/patients_data.csv"
         flash("Data exported Successfully into {}".format(dirpath), "success")
         return render_template("download_report.html")
         conn.close()
