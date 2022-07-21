@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 import csv
-
 import pandas as pd
 from sqlite3 import Error
 import xlwt
@@ -16,6 +15,7 @@ import io
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///qiudata.db'
 app.config['SECRET_KEY'] = 'pharma key'
+
 
 # initialize the database
 db = SQLAlchemy(app)
@@ -44,6 +44,10 @@ class patients(db.Model):
  # Create a string
 def __repr__(self):
     return '<Name %r>' % self.id
+
+############### Import the the dashboard file ##########
+from dash_application.dashy import create_dash_application
+
 
 # Create a Form Class
 class theatreform(FlaskForm):
@@ -83,10 +87,16 @@ validators=[InputRequired()])
     remark = TextAreaField("Remark")
     submit = SubmitField("Submit")
 
+#### Functions to use in dashboard
+
+
 ###########The various pages on the app
 @app.route('/')
 def index():
     return render_template("index.html")
+
+########### call out the dash app
+create_dash_application(app)
 
 
 @app.route('/create_form', methods=['GET', 'POST'])
