@@ -1,16 +1,13 @@
 import sqlite3
-from flask import Flask, render_template, flash, request,redirect
+from flask import Flask, render_template, flash, request, redirect, send_file
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, InputRequired, Length
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import pandas as pd
 import os
 import csv
-import pandas as pd
-from sqlite3 import Error
-import xlwt
-import io
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///qiudata.db'
@@ -86,8 +83,6 @@ validators=[InputRequired()])
     amount_paid = IntegerField("Amount Paid", validators=[InputRequired()])
     remark = TextAreaField("Remark")
     submit = SubmitField("Submit")
-
-#### Functions to use in dashboard
 
 
 ###########The various pages on the app
@@ -203,16 +198,15 @@ def view():
 def download_report():
     conn = sqlite3.connect("qiudata.db")
     cursor = conn.cursor()
-    cursor.execute("select * from patients")
-    with open("patients_data.csv", "w") as csv_file:
-        csv_writer = csv.writer(csv_file, delimiter="\t")
-        csv_writer.writerow([i[0] for i in cursor.description])
-        csv_writer.writerows(cursor)
-
-        dirpath = '/Downloads' + "/patients_data.csv"
-        flash("Data exported Successfully into {}".format(dirpath), "success")
-        return render_template("download_report.html")
-        conn.close()
+    sql_query = pd.read_sql_query(''' 
+                                 select * from patients
+                                  '''
+                                  , conn)
+    df = pd.DataFrame(sql_query)
+    df.to_csv(r'~/Downloads/ops_list.csv', index=False)
+    flash("Data exported Successfully into {}".format("Downloads Folder"), "success")
+    return render_template("download_report.html")
+    conn.close()
 
 #@app.route("/upload") ####### for future use
 #def upload():
