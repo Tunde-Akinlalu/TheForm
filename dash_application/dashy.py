@@ -34,7 +34,7 @@ data = pd.read_sql_query('SELECT input_date, surgeon, specialty, operation, amou
 
 def create_dash_application(flask_app):
     dash_app = dash.Dash(server=flask_app, name="Dashboard", url_base_pathname="/dashy/",
-                         #external_stylesheets=[dbc.themes.BOOTSTRAP],
+                         external_stylesheets=['/static/dist/css/styles.css'],
                          meta_tags=[{"name": "viewport", "content": "width=device-width"}],
                          suppress_callback_exceptions=True)
     dash_app.title = "Theatre Dashboard"
@@ -42,14 +42,14 @@ def create_dash_application(flask_app):
     dash_app.layout = html.Div(children=[
     html.Div(children=[
         #html.Img(img src = "/static/img/logo.png"    class ="logo"),
-        html.Img(src='dash_application/assets/logo.jpeg',
+        html.Img(src=dash_app.get_asset_url('logo.jpeg'),
         id='logo.jpeg', style={'marginTop': '5px', 'marginBottom': '10px', 'height': '80px'})
     ], id='header', className='row flex-display', style={'textAlign': 'center'}),
 
     html.Div(children=[
         html.H3(children="Theatre Dashboard", style={'marginTop': '-15px', 'marginBottom': '8px',
                                                              'color': 'white'}),
-        html.H6(children='SURGEONS PROCEDURE', style={'marginTop': '-15px', 'marginBottom': '10px'})
+        html.H6(children='SURGEONS PROCEDURES', style={'marginTop': '-15px', 'marginBottom': '10px'})
         ], id='sub_header', className='row flex-display', style={'textAlign': 'center'}),
 
   #########################################
